@@ -207,7 +207,8 @@ class EmbeddedMapper implements CustomMapper {
                                                                                     .hasSimpleValueConverter(mf.getSubClass())) {
                         newEntity = mapper.getConverters().decode(mf.getSubClass(), o, mf);
                     } else {
-                        newEntity = readMapOrCollectionOrEntity((DBObject) o, mf, cache, mapper, ephemeralMappedField);
+               //         newEntity = readMapOrCollectionOrEntity((DBObject) o, mf, cache, mapper, ephemeralMappedField);
+                        newEntity = o; 
                     }
                 }
 
@@ -246,7 +247,8 @@ class EmbeddedMapper implements CustomMapper {
                         if (val instanceof DBObject) {
                             newEntity = readMapOrCollectionOrEntity((DBObject) val, mf, cache, mapper, ephemeralMappedField);
                         } else {
-                            throw new MappingException("Embedded element isn't a DBObject! How can it be that is a " + val.getClass());
+//                            throw new MappingException("Embedded element isn't a DBObject! How can it be that is a " + val.getClass());
+                            newEntity = val;
                         }
 
                     }

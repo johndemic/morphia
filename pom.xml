@@ -238,7 +238,7 @@
                 </property>
             </activation>
             <properties>
-                <java-driver.version>3.0.0-SNAPSHOT</java-driver.version>
+                <java-driver.version>3.0.3</java-driver.version>
             </properties>
         </profile>
         <profile>
