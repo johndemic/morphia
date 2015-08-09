@@ -208,7 +208,14 @@ class EmbeddedMapper implements CustomMapper {
                         newEntity = mapper.getConverters().decode(mf.getSubClass(), o, mf);
                     } else {
                //         newEntity = readMapOrCollectionOrEntity((DBObject) o, mf, cache, mapper, ephemeralMappedField);
-                        newEntity = o; 
+
+                        if (o instanceof DBObject) {
+                            newEntity = readMapOrCollectionOrEntity((DBObject) o, mf, cache, mapper, ephemeralMappedField);
+                        } else {
+//                            throw new MappingException("Embedded element isn't a DBObject! How can it be that is a " + val.getClass());
+                            newEntity = o;
+                        }
+
                     }
                 }
 
@@ -237,7 +244,7 @@ class EmbeddedMapper implements CustomMapper {
             @Override
             public void eval(final Object key, final Object val) {
                 Object newEntity = null;
-
+                System.out.println("\n\n\n\n\n\nFOOOOOOO\n\n\n\n\n");
                 //run converters
                 if (val != null) {
                     if (mapper.getConverters().hasSimpleValueConverter(mf) || mapper.getConverters()
